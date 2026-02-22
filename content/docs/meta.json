@@ -1,0 +1,14 @@
+{
+  "title": "UWClassmate Docs",
+  "pages": [
+    "index",
+    "getting-started",
+    "architecture",
+    "features",
+    "api",
+    "database",
+    "ui",
+    "operations",
+    "contributing"
+  ]
+}

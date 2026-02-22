@@ -1,0 +1,25 @@
+---
+title: Architecture Overview
+description: High-level structure for rendering, auth, and data access.
+---
+
+## Layers
+
+1. App Router UI pages in `src/app`
+2. Shared UI components in `src/components`
+3. Data layer through Drizzle in `src/db`
+4. API handlers in `src/app/api/*/route.ts`
+
+## Request model
+
+- Server Components fetch data directly with Drizzle for page rendering.
+- Client Components call internal APIs for user-triggered writes.
+- Auth checks for protected writes happen in API handlers via Clerk `auth()`.
+
+## Package highlights
+
+- `next`, `react`, `typescript`
+- `drizzle-orm`, `mysql2`
+- `@clerk/nextjs`
+- `@radix-ui/*` + shadcn-style component set
+- `framer-motion` / `motion`

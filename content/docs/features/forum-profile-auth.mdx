@@ -1,0 +1,19 @@
+---
+title: Forum, Profile, and Auth
+description: Current state of account and forum-related flows.
+---
+
+## Auth integration
+
+- Clerk provider is mounted in `src/app/global-wrapper.tsx`
+- Clerk middleware runs via `src/middleware.ts`
+- Header shows sign-in/sign-out and `UserButton`
+
+## Profile
+
+- Route at `/profile/[[...profile]]` is tied to Clerk profile flow.
+
+## Forum
+
+- Current `/forum` page is a placeholder.
+- Database schema includes forum tables (`forum_posts`, `forum_comments`, etc.), indicating future or partial expansion.

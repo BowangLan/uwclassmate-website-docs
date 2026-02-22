@@ -1,13 +1,38 @@
 ---
-title: Hello World
-description: Your first document
+title: UWClassmate Frontend Docs
+description: Product and engineering documentation for the Next.js frontend powering UWClassmate.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+This site documents `/Users/bowanglan/Dev/uwclassmate-official-frontend-nextjs`.
 
-## What is Next?
+## What this project is
+
+UWClassmate is a University of Washington student platform focused on:
+
+- Course ratings and course detail discovery
+- Comment submission and browsing
+- Student org website pages (home, about, activities)
+- Authentication and profile experience (Clerk)
+
+## Stack at a glance
+
+- Next.js App Router (`next@16`)
+- React + TypeScript
+- Tailwind + shadcn/Radix UI
+- Clerk authentication
+- MySQL with Drizzle ORM
+
+## Docs map
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card title="Getting Started" href="/docs/getting-started/local-development" />
+  <Card title="Architecture" href="/docs/architecture/overview" />
+  <Card title="Feature Pages" href="/docs/features/course-rating" />
+  <Card title="API Routes" href="/docs/api/overview" />
+  <Card title="Database Model" href="/docs/database/schema" />
+  <Card title="Deployment" href="/docs/operations/deployment" />
 </Cards>
+
+## Scope notes
+
+This docs site describes the current codebase behavior, including areas marked in code as planned or partial (for example forum work and incremental auth-gating patterns).

@@ -1,0 +1,32 @@
+---
+title: Comment Submission
+description: End-to-end flow for course comment creation.
+---
+
+## Entry point
+
+`/submit-comment` is a client page with auth gating and searchable selectors.
+
+## Form behavior
+
+- Redirects unauthenticated users to `/sign-in`
+- Loads courses from `/api/courses`
+- Loads instructors from `/data/instructors.json`
+- Performs client-side validation for GPA/workload/grading ranges
+
+## API contract
+
+`POST /api/comments` accepts:
+
+- `courseId`
+- `professorId` or `professorName`
+- `comment`, `year`, `quarter`
+- `gpa`, `workload`, `grading`, optional `language`
+
+Server validates and:
+
+- ensures auth
+- verifies course/professor
+- optionally creates professor when name is new
+- inserts comment
+- recalculates course aggregates in `CourseRating`

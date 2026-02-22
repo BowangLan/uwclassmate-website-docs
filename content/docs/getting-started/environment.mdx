@@ -1,0 +1,28 @@
+---
+title: Environment & Secrets
+description: Runtime configuration and auth/data dependencies.
+---
+
+## Required env vars
+
+`DATABASE_URL` is required by Drizzle and Prisma.
+
+## Auth requirements
+
+The app uses Clerk (`@clerk/nextjs`). For authenticated flows, set standard Clerk env vars in addition to `DATABASE_URL`.
+
+Typical fields:
+
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+
+## Runtime behavior
+
+- `src/db/drizzle.ts` loads `.env` and initializes a MySQL connection via `drizzle-orm/mysql2`.
+- `src/middleware.ts` runs Clerk middleware for app/API route matching.
+
+## Safety
+
+- Never commit `.env`.
+- Avoid hardcoding production connection strings.
+- Validate auth in write APIs (already done in `POST /api/comments`).

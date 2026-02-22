@@ -1,0 +1,9 @@
+{
+  "title": "Features",
+  "pages": [
+    "home-about-activities",
+    "course-rating",
+    "comments-submission",
+    "forum-profile-auth"
+  ]
+}

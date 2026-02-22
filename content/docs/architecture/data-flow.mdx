@@ -1,0 +1,30 @@
+---
+title: Data Flow
+description: How data moves between DB, APIs, and pages.
+---
+
+## Read path
+
+1. Server page executes SQL/Drizzle query.
+2. Result is transformed to UI-friendly shape.
+3. Server renders HTML with hydrated client islands where needed.
+
+Example pages:
+
+- `src/app/course-rating/page.tsx`
+- `src/app/course-rating/search/page.tsx`
+- `src/app/courses/[courseCode]/page.tsx`
+
+## Write path (comments)
+
+1. User fills `/submit-comment` client form.
+2. Frontend calls `POST /api/comments`.
+3. Handler validates auth + payload.
+4. Inserts comment and updates `CourseRating` aggregate values.
+5. Returns JSON with inserted comment id.
+
+## Performance patterns in current code
+
+- `Promise.all` for parallel client-side fetches in submit form
+- `useMemo` for expensive filtering (courses/professors)
+- Search result limiting in dropdown lists to prevent heavy renders

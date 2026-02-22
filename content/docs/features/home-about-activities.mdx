@@ -1,0 +1,23 @@
+---
+title: Home, About, Activities
+description: Public-facing organization pages and static content behavior.
+---
+
+## Home
+
+`src/app/page.tsx` composes:
+
+- `Hero`
+- `NewlyLaunched`
+- `Activities`
+- `CTA`
+
+## About
+
+`src/app/about/page.tsx` presents organization intro and leadership cards, with bilingual content emphasis.
+
+## Activities
+
+- Route: `src/app/activities/[slug]/page.tsx`
+- Source data: `src/app/data.ts`
+- Invalid slug -> `notFound()` behavior

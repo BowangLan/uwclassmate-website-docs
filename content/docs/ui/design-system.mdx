@@ -1,0 +1,21 @@
+---
+title: UI and Styling
+description: Component system, styling approach, and UX conventions.
+---
+
+## Component strategy
+
+- Shared primitives in `src/components/ui`
+- Feature components in `src/components` and `src/app/*`
+- Utility class merge helper in `src/lib/utils.ts` (`cn`)
+
+## Styling
+
+- Tailwind CSS is primary styling mechanism.
+- UI primitives use Radix + shadcn-style composition.
+- Motion libraries (`framer-motion`, `motion`) are available for interactions.
+
+## Navigation
+
+- `DesktopNavMenu` and `MobileNavMenu` are driven by `NAV_ITEMS` from `src/app/constants.ts`.
+- Header auth CTA behavior depends on current Clerk user and UW email domain checks.

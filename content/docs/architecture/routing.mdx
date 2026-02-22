@@ -1,0 +1,25 @@
+---
+title: Routing Topology
+description: Current page, dynamic route, and API route map.
+---
+
+## Main pages
+
+- `/` home landing page
+- `/course-rating` course list tabs
+- `/course-rating/search?query=` search results
+- `/courses/[courseCode]` course detail page
+- `/submit-comment` authenticated submission form
+- `/about`, `/activities/[slug]`
+- `/forum` (placeholder)
+- `/profile/[[...profile]]`, `/sign-in/[[...sign-in]]`, `/sign-up/[[...sign-up]]`
+
+## API routes
+
+- `GET /api/courses`
+- `GET /api/professors`
+- `POST /api/comments`
+
+## Compatibility route
+
+`/CourseDetail/[courseCode]` re-exports the canonical course detail page to preserve legacy URL compatibility.

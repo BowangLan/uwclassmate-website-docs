@@ -1,0 +1,26 @@
+---
+title: Contribution Workflow
+description: Team conventions for safe and fast iteration.
+---
+
+## Branch and PR flow
+
+1. Create a feature branch.
+2. Keep commits scoped and readable.
+3. Run lint/build before opening PR.
+4. Include screenshots for UI changes.
+5. Document schema/API contract changes in docs.
+
+## Code quality baseline
+
+- No TypeScript errors
+- No obvious hydration issues
+- API handlers return explicit status codes
+- UI remains responsive on mobile and desktop
+
+## Suggested checks
+
+```bash
+bun run lint
+bun run build
+```

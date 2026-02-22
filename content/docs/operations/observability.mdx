@@ -1,0 +1,24 @@
+---
+title: Observability and Debugging
+description: Logging and troubleshooting practices for current implementation.
+---
+
+## Existing logging points
+
+The codebase includes `console.log` and `console.error` in:
+
+- course and professor API routes
+- comment submission route
+- course rating and detail render paths
+
+## Practical troubleshooting flow
+
+1. Verify auth state and Clerk session.
+2. Check DB connection via `DATABASE_URL`.
+3. Reproduce API call with browser network panel.
+4. Validate payload ranges for comment submission.
+5. Inspect server logs for route-level errors.
+
+## Recommended next step
+
+Adopt structured logging and error reporting (for example request ids, route tags, and centralized error capture) as traffic grows.

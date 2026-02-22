@@ -1,0 +1,47 @@
+---
+title: Local Development
+description: Run UWClassmate frontend locally with the current stack and scripts.
+---
+
+## Prerequisites
+
+- Node.js 18+
+- Bun (project lockfile is `bun.lock`) or npm/pnpm
+- MySQL database accessible from your machine
+
+## Install
+
+```bash
+cd /Users/bowanglan/Dev/uwclassmate-official-frontend-nextjs
+bun install
+```
+
+## Configure env
+
+Create `.env` in project root:
+
+```bash
+DATABASE_URL="mysql://<user>:<password>@<host>:3306/<database>"
+```
+
+## Run
+
+```bash
+bun run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000).
+
+## Build and lint
+
+```bash
+bun run lint
+bun run build
+```
+
+## Useful paths
+
+- App routes: `src/app`
+- API handlers: `src/app/api`
+- Database adapter: `src/db/drizzle.ts`
+- Schema definitions: `src/db/schema.ts`, `prisma/schema.prisma`

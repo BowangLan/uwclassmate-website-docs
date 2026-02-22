@@ -1,0 +1,23 @@
+---
+title: Deployment
+description: Production rollout and environment checklist.
+---
+
+## Build commands
+
+```bash
+bun run build
+bun run start
+```
+
+## Deployment checklist
+
+- Set production `DATABASE_URL`
+- Set Clerk keys for target environment
+- Confirm DB network rules allow app runtime access
+- Validate `/api/comments` auth + insert path
+- Smoke test key pages (`/`, `/course-rating`, `/courses/[courseCode]`, `/submit-comment`)
+
+## Runtime notes
+
+- Home route uses `runtime = "edge"`; validate any environment/runtime restrictions accordingly.

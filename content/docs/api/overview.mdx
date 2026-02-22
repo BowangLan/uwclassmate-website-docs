@@ -1,0 +1,43 @@
+---
+title: API Reference
+description: Internal route handlers used by the frontend.
+---
+
+## `GET /api/courses`
+
+Returns sorted list of courses:
+
+```json
+[
+  {
+    "courseId": 123,
+    "courseName": "CSE142",
+    "courseFullName": "Computer Programming I"
+  }
+]
+```
+
+## `GET /api/professors`
+
+Returns sorted professor list:
+
+```json
+[
+  {
+    "id": 12,
+    "name": "Instructor Name"
+  }
+]
+```
+
+## `POST /api/comments`
+
+Creates a course comment and updates aggregate ratings.
+
+### Response codes
+
+- `201` created
+- `400` invalid payload/ranges
+- `401` unauthorized
+- `404` missing course/professor
+- `500` internal error

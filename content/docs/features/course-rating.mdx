@@ -1,0 +1,23 @@
+---
+title: Course Rating Experience
+description: Course list, search, and course detail behavior.
+---
+
+## Course list page
+
+`/course-rating` runs SQL to load two main course lists (`CourseLists` ids 1 and 2), each with nested course payloads.
+
+## Search
+
+`/course-rating/search` uses `query` search param and SQL `LIKE` matching on `Courses.courseName`.
+
+## Course detail
+
+`/courses/[courseCode]` fetches:
+
+- Course basics and description
+- Credit info
+- Aggregated rating metrics
+- Joined comments + professor names
+
+Also exposed at `/CourseDetail/[courseCode]` via re-export.

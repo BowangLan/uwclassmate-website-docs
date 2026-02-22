@@ -1,26 +1,30 @@
 ---
 title: Contribution Workflow
-description: Team conventions for safe and fast iteration.
+description: Team workflow for safe changes and beginner-friendly collaboration.
 ---
 
 ## Branch and PR flow
 
-1. Create a feature branch.
-2. Keep commits scoped and readable.
+1. Create a feature branch for one focused change.
+2. Keep commits small and readable.
 3. Run lint/build before opening PR.
-4. Include screenshots for UI changes.
-5. Document schema/API contract changes in docs.
+4. Add screenshots for UI changes.
+5. Update docs when schema/API behavior changes.
 
-## Code quality baseline
+## Quality baseline
 
 - No TypeScript errors
 - No obvious hydration issues
-- API handlers return explicit status codes
-- UI remains responsive on mobile and desktop
+- API routes return explicit status codes
+- UI remains usable on mobile and desktop
 
-## Suggested checks
+## Required checks
 
 ```bash
 bun run lint
 bun run build
 ```
+
+## Beginner tip
+
+If you are new to PRs: write a short PR description with "what changed", "why", and "how tested" so reviewers can quickly validate your intent.

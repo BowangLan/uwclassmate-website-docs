@@ -1,6 +1,6 @@
 ---
 title: Deployment
-description: Production rollout and environment checklist.
+description: Beginner-friendly production rollout checklist.
 ---
 
 ## Build commands
@@ -10,14 +10,19 @@ bun run build
 bun run start
 ```
 
+- `build`: creates optimized production bundle
+- `start`: runs production server locally for smoke testing
+
 ## Deployment checklist
 
 - Set production `DATABASE_URL`
-- Set Clerk keys for target environment
-- Confirm DB network rules allow app runtime access
-- Validate `/api/comments` auth + insert path
-- Smoke test key pages (`/`, `/course-rating`, `/courses/[courseCode]`, `/submit-comment`)
+- Set production Clerk keys
+- Confirm DB network access from runtime environment
+- Validate `POST /api/comments` auth + insert path
+- Smoke test core pages: `/`, `/course-rating`, `/courses/[courseCode]`, `/submit-comment`
 
-## Runtime notes
+## Runtime note
 
-- Home route uses `runtime = "edge"`; validate any environment/runtime restrictions accordingly.
+Home route uses `runtime = "edge"`.
+
+If you are new: edge runtime can have environment/library limitations compared to standard Node runtime, so verify compatibility before release.

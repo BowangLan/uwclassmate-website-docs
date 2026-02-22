@@ -1,23 +1,35 @@
 ---
 title: Course Rating Experience
-description: Course list, search, and course detail behavior.
+description: Beginner-friendly walkthrough of list, search, and detail pages.
 ---
+
+## User journey
+
+Most users go through this flow:
+
+1. Open `/course-rating` to browse course lists.
+2. Use `/course-rating/search` to find a specific course.
+3. Open `/courses/[courseCode]` for details and comments.
 
 ## Course list page
 
-`/course-rating` runs SQL to load two main course lists (`CourseLists` ids 1 and 2), each with nested course payloads.
+`/course-rating` loads two primary list groups (`CourseLists` ids `1` and `2`) and their nested courses.
 
-## Search
+## Search page
 
-`/course-rating/search` uses `query` search param and SQL `LIKE` matching on `Courses.courseName`.
+`/course-rating/search` reads the `query` URL param and uses SQL `LIKE` matching on `Courses.courseName`.
 
-## Course detail
+If you are new: SQL `LIKE` is partial text matching (for example, searching part of a course name).
+
+## Course detail page
 
 `/courses/[courseCode]` fetches:
 
-- Course basics and description
+- Course metadata and description
 - Credit info
 - Aggregated rating metrics
-- Joined comments + professor names
+- Joined comments with professor names
 
-Also exposed at `/CourseDetail/[courseCode]` via re-export.
+Legacy alias route also exists:
+
+- `/CourseDetail/[courseCode]` (re-export)

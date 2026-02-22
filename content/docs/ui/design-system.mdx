@@ -1,21 +1,23 @@
 ---
 title: UI and Styling
-description: Component system, styling approach, and UX conventions.
+description: Component organization, styling approach, and navigation behavior.
 ---
 
-## Component strategy
+## Component structure
 
-- Shared primitives in `src/components/ui`
-- Feature components in `src/components` and `src/app/*`
-- Utility class merge helper in `src/lib/utils.ts` (`cn`)
+- Shared UI primitives: `src/components/ui`
+- Feature-level components: `src/components` and `src/app/*`
+- Class merge helper: `src/lib/utils.ts` (`cn`)
 
-## Styling
+If you are new: "primitive" means low-level reusable elements (button, dialog, dropdown) that feature UIs compose.
 
-- Tailwind CSS is primary styling mechanism.
-- UI primitives use Radix + shadcn-style composition.
-- Motion libraries (`framer-motion`, `motion`) are available for interactions.
+## Styling stack
 
-## Navigation
+- Tailwind CSS is the primary styling method
+- Radix + shadcn-style patterns are used for UI primitives
+- `framer-motion` and `motion` are available for interactions/animations
 
-- `DesktopNavMenu` and `MobileNavMenu` are driven by `NAV_ITEMS` from `src/app/constants.ts`.
-- Header auth CTA behavior depends on current Clerk user and UW email domain checks.
+## Navigation behavior
+
+- `DesktopNavMenu` and `MobileNavMenu` are built from `NAV_ITEMS` in `src/app/constants.ts`
+- Header auth CTA behavior depends on Clerk user state and UW email domain checks

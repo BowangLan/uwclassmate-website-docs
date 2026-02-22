@@ -1,17 +1,24 @@
 ---
 title: Routing Topology
-description: Current page, dynamic route, and API route map.
+description: Beginner-friendly map of pages, dynamic routes, and API routes.
 ---
 
-## Main pages
+## What is a route?
 
-- `/` home landing page
-- `/course-rating` course list tabs
-- `/course-rating/search?query=` search results
-- `/courses/[courseCode]` course detail page
-- `/submit-comment` authenticated submission form
+A route is a URL path that maps to a page or API handler.
+
+- Page route: returns HTML/UI
+- API route: returns JSON/status codes
+
+## Main page routes
+
+- `/`: home page
+- `/course-rating`: course list page
+- `/course-rating/search?query=`: search result page
+- `/courses/[courseCode]`: dynamic course detail page (`[courseCode]` is a variable)
+- `/submit-comment`: authenticated comment form
 - `/about`, `/activities/[slug]`
-- `/forum` (placeholder)
+- `/forum` (currently placeholder)
 - `/profile/[[...profile]]`, `/sign-in/[[...sign-in]]`, `/sign-up/[[...sign-up]]`
 
 ## API routes
@@ -22,4 +29,6 @@ description: Current page, dynamic route, and API route map.
 
 ## Compatibility route
 
-`/CourseDetail/[courseCode]` re-exports the canonical course detail page to preserve legacy URL compatibility.
+`/CourseDetail/[courseCode]` re-exports the canonical detail page.
+
+Why: old/legacy links still work while new canonical route remains `/courses/[courseCode]`.

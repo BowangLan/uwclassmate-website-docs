@@ -1,26 +1,35 @@
 ---
 title: UWClassmate Frontend Docs
-description: Product and engineering documentation for the Next.js frontend powering UWClassmate.
+description: Beginner-friendly docs for the Next.js frontend that powers UWClassmate.
 ---
 
-This site documents `/Users/bowanglan/Dev/uwclassmate-official-frontend-nextjs`.
+This docs site explains the codebase at `/Users/bowanglan/Dev/uwclassmate-official-frontend-nextjs`.
 
-## What this project is
+## Start here (new to Next.js/web)
+
+If you are new, follow this order:
+
+1. Read [Local Development](/docs/getting-started/local-development) to run the app.
+2. Read [Environment & Secrets](/docs/getting-started/environment) to configure auth and database.
+3. Read [Architecture Overview](/docs/architecture/overview) to understand how pages and APIs connect.
+4. Explore feature docs after that.
+
+## What this project does
 
 UWClassmate is a University of Washington student platform focused on:
 
-- Course ratings and course detail discovery
-- Comment submission and browsing
-- Student org website pages (home, about, activities)
-- Authentication and profile experience (Clerk)
+- Course ratings and course detail pages
+- Student comments on courses/professors
+- Public site pages (home, about, activities)
+- Sign-in/profile flows using Clerk
 
-## Stack at a glance
+## Tech stack (plain language)
 
-- Next.js App Router (`next@16`)
-- React + TypeScript
-- Tailwind + shadcn/Radix UI
-- Clerk authentication
-- MySQL with Drizzle ORM
+- `Next.js` App Router: page routing and server rendering
+- `React + TypeScript`: UI + safer typed code
+- `Tailwind + Radix/shadcn`: styling + reusable UI parts
+- `Clerk`: authentication (sign-in/sign-up/user sessions)
+- `MySQL + Drizzle ORM`: database + typed queries
 
 ## Docs map
 
@@ -35,4 +44,4 @@ UWClassmate is a University of Washington student platform focused on:
 
 ## Scope notes
 
-This docs site describes the current codebase behavior, including areas marked in code as planned or partial (for example forum work and incremental auth-gating patterns).
+These docs describe the current implementation, including incomplete/placeholder areas (for example the forum route).

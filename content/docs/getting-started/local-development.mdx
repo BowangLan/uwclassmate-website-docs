@@ -1,43 +1,56 @@
 ---
 title: Local Development
-description: Run UWClassmate frontend locally with the current stack and scripts.
+description: Step-by-step setup for running UWClassmate locally.
 ---
+
+## What you will do
+
+You will install dependencies, add environment variables, and run a local dev server.
 
 ## Prerequisites
 
-- Node.js 18+
-- Bun (project lockfile is `bun.lock`) or npm/pnpm
-- MySQL database accessible from your machine
+- Node.js `18+`
+- Bun (`bun.lock` is included), or npm/pnpm if needed
+- A reachable MySQL database
 
-## Install
+If you are newer to web projects: a "dev server" is a local process that rebuilds and refreshes your app while you code.
+
+## 1. Install dependencies
 
 ```bash
 cd /Users/bowanglan/Dev/uwclassmate-official-frontend-nextjs
 bun install
 ```
 
-## Configure env
+## 2. Create `.env`
 
-Create `.env` in project root:
+In the project root, create `.env`:
 
 ```bash
 DATABASE_URL="mysql://<user>:<password>@<host>:3306/<database>"
 ```
 
-## Run
+If auth features are used, also add Clerk keys (see Environment doc).
+
+## 3. Start development server
 
 ```bash
 bun run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Build and lint
+## 4. Basic quality checks
+
+Run these before pushing code:
 
 ```bash
 bun run lint
 bun run build
 ```
+
+- `lint`: catches style/code-quality issues
+- `build`: catches compile/runtime route issues that may not show in local hot reload
 
 ## Useful paths
 
@@ -45,3 +58,9 @@ bun run build
 - API handlers: `src/app/api`
 - Database adapter: `src/db/drizzle.ts`
 - Schema definitions: `src/db/schema.ts`, `prisma/schema.prisma`
+
+## Common setup issues
+
+- App cannot connect to DB: verify `DATABASE_URL`, host access, and DB credentials.
+- Sign-in button errors: verify Clerk keys are set.
+- Works in `dev` but fails in `build`: run `bun run build` and fix reported route/type errors.

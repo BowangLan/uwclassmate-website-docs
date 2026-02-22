@@ -1,23 +1,25 @@
 ---
 title: Home, About, Activities
-description: Public-facing organization pages and static content behavior.
+description: Public-facing pages and where their content comes from.
 ---
 
-## Home
+## Home page
 
-`src/app/page.tsx` composes:
+`src/app/page.tsx` composes these sections:
 
 - `Hero`
 - `NewlyLaunched`
 - `Activities`
 - `CTA`
 
-## About
+## About page
 
-`src/app/about/page.tsx` presents organization intro and leadership cards, with bilingual content emphasis.
+`src/app/about/page.tsx` contains organization intro + leadership cards (including bilingual content emphasis).
 
-## Activities
+## Activities page
 
-- Route: `src/app/activities/[slug]/page.tsx`
-- Source data: `src/app/data.ts`
-- Invalid slug -> `notFound()` behavior
+- Route file: `src/app/activities/[slug]/page.tsx`
+- Data source: `src/app/data.ts`
+- Invalid slug behavior: calls `notFound()`
+
+If you are new: `notFound()` tells Next.js to render the 404 page when content key/slug does not exist.

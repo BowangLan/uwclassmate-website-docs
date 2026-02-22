@@ -1,11 +1,18 @@
 ---
 title: API Reference
-description: Internal route handlers used by the frontend.
+description: Internal API routes used by the frontend, explained for beginners.
 ---
+
+## API basics
+
+These are internal routes under `/api/*` that the frontend calls.
+
+- `GET`: read data
+- `POST`: create/update data
 
 ## `GET /api/courses`
 
-Returns sorted list of courses:
+Returns a sorted list of courses.
 
 ```json
 [
@@ -19,7 +26,7 @@ Returns sorted list of courses:
 
 ## `GET /api/professors`
 
-Returns sorted professor list:
+Returns a sorted list of professors.
 
 ```json
 [
@@ -32,12 +39,16 @@ Returns sorted professor list:
 
 ## `POST /api/comments`
 
-Creates a course comment and updates aggregate ratings.
+Creates a course comment and updates aggregate course ratings.
 
 ### Response codes
 
-- `201` created
-- `400` invalid payload/ranges
-- `401` unauthorized
-- `404` missing course/professor
-- `500` internal error
+- `201`: comment created
+- `400`: invalid payload/value ranges
+- `401`: user not authenticated
+- `404`: referenced course/professor not found
+- `500`: unexpected server error
+
+## Testing tip
+
+Use browser DevTools Network tab to inspect request payload, status code, and response JSON while testing form submission.

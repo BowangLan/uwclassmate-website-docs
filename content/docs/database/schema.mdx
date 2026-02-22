@@ -1,7 +1,11 @@
 ---
 title: Schema and Data Model
-description: Core tables and practical relationships used by the app.
+description: Core tables, relationships, and where schema definitions live.
 ---
+
+## How to read this page
+
+Think in terms of entities (tables) and relations (how tables connect).
 
 ## Primary entities
 
@@ -22,13 +26,15 @@ description: Core tables and practical relationships used by the app.
 - `forum_user_favorites`
 - `forum_trendy_posts`
 
-## Source of truth files
+## Source-of-truth files
 
 - Prisma schema: `prisma/schema.prisma`
 - Drizzle schema: `src/db/schema.ts`
 
-## Notes
+## Practical notes
 
-- The codebase currently uses Drizzle for runtime queries.
-- Prisma schema is still maintained and useful for schema visibility.
-- Aggregate course metrics are maintained in `CourseRating` during comment writes.
+- Runtime queries currently use Drizzle.
+- Prisma schema is still maintained for visibility/tooling.
+- `CourseRating` stores aggregate metrics updated during comment writes.
+
+If you are new: aggregate metrics are precomputed summary values (for example averages) so pages can load faster.

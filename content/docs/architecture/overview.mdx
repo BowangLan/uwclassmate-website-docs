@@ -1,25 +1,34 @@
 ---
 title: Architecture Overview
-description: High-level structure for rendering, auth, and data access.
+description: Beginner-friendly map of UI, APIs, auth, and database access.
 ---
 
-## Layers
+## Mental model
 
-1. App Router UI pages in `src/app`
-2. Shared UI components in `src/components`
-3. Data layer through Drizzle in `src/db`
-4. API handlers in `src/app/api/*/route.ts`
+Think of the app as four layers:
 
-## Request model
+1. Pages (`src/app`): what users see.
+2. Components (`src/components`): reusable UI building blocks.
+3. APIs (`src/app/api/*/route.ts`): server endpoints for writes and data fetching.
+4. Database (`src/db`): Drizzle queries against MySQL.
 
-- Server Components fetch data directly with Drizzle for page rendering.
-- Client Components call internal APIs for user-triggered writes.
-- Auth checks for protected writes happen in API handlers via Clerk `auth()`.
+## How a request usually works
 
-## Package highlights
+- For page loads, Server Components often query DB directly and render HTML.
+- For user actions (submit/edit), client code calls internal API routes.
+- API routes validate auth + input, then write to DB.
 
-- `next`, `react`, `typescript`
-- `drizzle-orm`, `mysql2`
-- `@clerk/nextjs`
-- `@radix-ui/*` + shadcn-style component set
-- `framer-motion` / `motion`
+This split keeps rendering fast while protecting sensitive write logic on the server.
+
+## Auth model
+
+- Clerk middleware runs first on matched routes.
+- Protected writes check auth in API handlers using Clerk `auth()`.
+
+## Main packages and roles
+
+- `next`, `react`, `typescript`: app framework + UI + typed JS
+- `drizzle-orm`, `mysql2`: typed DB access
+- `@clerk/nextjs`: auth/session management
+- `@radix-ui/*` and shadcn-style components: UI primitives
+- `framer-motion` / `motion`: animation utilities

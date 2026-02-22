@@ -1,32 +1,36 @@
 ---
 title: Comment Submission
-description: End-to-end flow for course comment creation.
+description: End-to-end flow for creating a course comment safely.
 ---
 
-## Entry point
+## Entry page
 
 `/submit-comment` is a client page with auth gating and searchable selectors.
 
 ## Form behavior
 
-- Redirects unauthenticated users to `/sign-in`
-- Loads courses from `/api/courses`
-- Loads instructors from `/data/instructors.json`
-- Performs client-side validation for GPA/workload/grading ranges
+- If user is not signed in, redirect to `/sign-in`
+- Courses are loaded from `/api/courses`
+- Instructors are loaded from `/data/instructors.json`
+- Client validates ranges for GPA/workload/grading before submit
 
 ## API contract
 
-`POST /api/comments` accepts:
+`POST /api/comments` payload fields:
 
 - `courseId`
 - `professorId` or `professorName`
 - `comment`, `year`, `quarter`
 - `gpa`, `workload`, `grading`, optional `language`
 
-Server validates and:
+## Server-side flow
 
-- ensures auth
-- verifies course/professor
-- optionally creates professor when name is new
-- inserts comment
-- recalculates course aggregates in `CourseRating`
+After request reaches server, API:
+
+1. Checks auth
+2. Validates course/professor existence
+3. Creates professor if name is new (when applicable)
+4. Inserts comment
+5. Recalculates aggregate metrics in `CourseRating`
+
+Why this matters: server-side validation prevents invalid or unauthenticated writes even if client checks are bypassed.

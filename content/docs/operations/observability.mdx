@@ -1,24 +1,26 @@
 ---
 title: Observability and Debugging
-description: Logging and troubleshooting practices for current implementation.
+description: Practical troubleshooting steps for this codebase.
 ---
 
-## Existing logging points
+## Current logging
 
-The codebase includes `console.log` and `console.error` in:
+The app currently uses `console.log`/`console.error` in key areas:
 
-- course and professor API routes
-- comment submission route
-- course rating and detail render paths
+- Course and professor API routes
+- Comment submission route
+- Course rating/detail render paths
 
-## Practical troubleshooting flow
+## Fast debugging flow
 
-1. Verify auth state and Clerk session.
-2. Check DB connection via `DATABASE_URL`.
-3. Reproduce API call with browser network panel.
-4. Validate payload ranges for comment submission.
-5. Inspect server logs for route-level errors.
+1. Confirm auth state and active Clerk session.
+2. Confirm DB connection (`DATABASE_URL`).
+3. Reproduce failing request in browser Network panel.
+4. Validate comment payload ranges/types.
+5. Check server logs for route-level errors.
 
-## Recommended next step
+## Good next improvement
 
-Adopt structured logging and error reporting (for example request ids, route tags, and centralized error capture) as traffic grows.
+Adopt structured logging and centralized error reporting (request id, route tag, grouped errors) as traffic grows.
+
+If you are new: structured logs are machine-readable logs with consistent fields, which makes debugging in production much easier.

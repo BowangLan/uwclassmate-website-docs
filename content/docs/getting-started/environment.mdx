@@ -1,28 +1,46 @@
 ---
 title: Environment & Secrets
-description: Runtime configuration and auth/data dependencies.
+description: Required environment variables and how they affect runtime behavior.
 ---
 
-## Required env vars
+## Why this matters
+
+Environment variables are runtime configuration values (DB URL, auth keys). The app will fail if required values are missing.
+
+## Required variable
 
 `DATABASE_URL` is required by Drizzle and Prisma.
 
-## Auth requirements
+Example:
 
-The app uses Clerk (`@clerk/nextjs`). For authenticated flows, set standard Clerk env vars in addition to `DATABASE_URL`.
+```bash
+DATABASE_URL="mysql://<user>:<password>@<host>:3306/<database>"
+```
 
-Typical fields:
+## Auth variables (Clerk)
+
+For sign-in/profile/auth-protected routes, set:
 
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
 - `CLERK_SECRET_KEY`
 
-## Runtime behavior
+Without these, auth UI or protected API checks may break.
 
-- `src/db/drizzle.ts` loads `.env` and initializes a MySQL connection via `drizzle-orm/mysql2`.
-- `src/middleware.ts` runs Clerk middleware for app/API route matching.
+## Where these are used
 
-## Safety
+- `src/db/drizzle.ts`: reads env and creates MySQL connection
+- `src/middleware.ts`: runs Clerk middleware for matched app/API routes
+
+## Security basics
 
 - Never commit `.env`.
-- Avoid hardcoding production connection strings.
-- Validate auth in write APIs (already done in `POST /api/comments`).
+- Never hardcode production credentials.
+- Keep write APIs protected (for example `POST /api/comments` validates auth).
+
+## Quick check
+
+After setting env vars:
+
+1. Start app with `bun run dev`.
+2. Open authenticated pages and confirm sign-in state works.
+3. Submit a test API write path (comment form) to verify DB + auth.

@@ -1,13 +1,15 @@
 ---
 title: Data Flow
-description: How data moves between DB, APIs, and pages.
+description: How data moves through pages, APIs, and database writes.
 ---
 
-## Read path
+## Read path (showing data)
 
-1. Server page executes SQL/Drizzle query.
-2. Result is transformed to UI-friendly shape.
-3. Server renders HTML with hydrated client islands where needed.
+1. A page loads.
+2. Server-side code runs a Drizzle query.
+3. Data is transformed into UI-friendly shape.
+4. HTML is rendered and sent to browser.
+5. Client components hydrate only where interactivity is needed.
 
 Example pages:
 
@@ -15,16 +17,18 @@ Example pages:
 - `src/app/course-rating/search/page.tsx`
 - `src/app/courses/[courseCode]/page.tsx`
 
-## Write path (comments)
+## Write path (submitting comments)
 
-1. User fills `/submit-comment` client form.
-2. Frontend calls `POST /api/comments`.
-3. Handler validates auth + payload.
-4. Inserts comment and updates `CourseRating` aggregate values.
-5. Returns JSON with inserted comment id.
+1. User fills `/submit-comment` form.
+2. Frontend sends `POST /api/comments`.
+3. API validates auth and input.
+4. API inserts comment and updates aggregate values in `CourseRating`.
+5. API returns JSON (including new comment id).
 
 ## Performance patterns in current code
 
-- `Promise.all` for parallel client-side fetches in submit form
-- `useMemo` for expensive filtering (courses/professors)
-- Search result limiting in dropdown lists to prevent heavy renders
+- `Promise.all` for parallel fetches in submit form
+- `useMemo` for expensive list filtering
+- Search dropdown result limiting to avoid large renders
+
+If you are new: these patterns reduce waiting time and browser work when lists are large.
